@@ -12,6 +12,14 @@ pub fn build(b: *std.build.Builder) void {
             "src/dev/leroycepearson/arraysandfor/ArraysAndFor.java",
         },
     });
+
+    addExample(b, build_all, .{
+        .name = "strings",
+        .mainClass = "dev.leroycepearson.strings.Strings",
+        .sources = &.{
+            "src/dev/leroycepearson/strings/Strings.java",
+        },
+    });
 }
 
 const Example = struct {
@@ -42,7 +50,7 @@ pub fn addExample(b: *std.build.Builder, build_all: *std.build.Step, example: Ex
     // Create command to run the example
     const run_command = b.addSystemCommand(&.{ "java", "--class-path", BUILD_DIR, example.mainClass });
     run_command.step.dependOn(build_step);
-    
+
     const run_step = b.step(b.fmt("run-{s}", .{example.name}), b.fmt("Build the {s} example", .{example.name}));
     run_step.dependOn(&run_command.step);
 }
