@@ -20,6 +20,14 @@ pub fn build(b: *std.build.Builder) void {
             "src/dev/leroycepearson/strings/Strings.java",
         },
     });
+
+    addExample(b, build_all, .{
+        .name = "arraylist",
+        .mainClass = "dev.leroycepearson.qainfosys.ArrayListExercise",
+        .sources = &.{
+            "src/dev/leroycepearson/qainfosys/ArrayListExercise.java",
+        },
+    });
 }
 
 const Example = struct {
