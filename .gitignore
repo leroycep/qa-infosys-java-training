@@ -1,1 +1,3 @@
 *.class
+zig-cache/
+build
